@@ -1,34 +1,39 @@
 body {
     background-color: green;
-    font-family: bai jamjuree;
+    font-family: 'Bai Jamjuree', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-#container{
+#container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 4rem;
-    gap: 3rem; 
+    gap: 3rem;
 }
 
-.cartao{
+.cartao {
     margin: 1rem 1rem;
     height: 20rem;
     flex-grow: 1;
     flex-basis: calc(33% - 6rem);
+    perspective: 1000px;
+    cursor: pointer;
 }
 
-.cartao__conteudo{
+.cartao__conteudo {
     text-align: center;
     background-color: rgb(177, 0, 0);
-    height:100%;
+    height: 100%;
     transform-style: preserve-3d;
-    transition: transform 300ms ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    position: relative;
 }
 
-.cartao__conteudo h3{
-    color: green;
-    border: 1px solid green;
+.cartao__conteudo h3 {
+    color: white;
+    border: 1px solid white;
     text-align: left;
     padding: 0.5rem;
     position: absolute;
@@ -38,50 +43,63 @@ body {
     backface-visibility: hidden;
 }
 
-.cartao__conteudo p{
-    margin-top: 1rem;
-    padding: 2rem;
-    margin-top: 4rem;
+.cartao__conteudo p {
+    padding: 1rem;
 }
 
-.cartao__conteudo__pergunta p {
-    color: green;
-    font-weight: 500;
-}
-
+.cartao__conteudo__pergunta p,
 .cartao__conteudo__resposta p {
-    color: orange;
     font-weight: 700;
-}
-
-.cartao:hover .cartao__conteudo{
-    transform: rotateY(180deg);
-
+    color: white;
+    text-align: center;
 }
 
 .cartao__conteudo__pergunta,
-.cartao__conteudo__resposta{
+.cartao__conteudo__resposta {
     backface-visibility: hidden;
     position: absolute;
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.cartao__conteudo__resposta{
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);
+    background-color: rgb(150, 0, 0);
+}
+
+.cartao:hover .cartao__conteudo {
     transform: rotateY(180deg);
 }
 
-footer{
-    background-color:black;
+footer {
+    background-color: black;
     color: white;
-    position: fixed;
+    position: sticky;
     bottom: 0;
-    width: 100%;
-    height: 2rem;
+    text-align: center;
+    padding: 1rem;
 }
 
 footer p {
-    text-align: center;
-    font-size: 0.6rem;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .cartao {
+        flex-basis: 100%;
+        height: auto;
+    }
+    .cartao__conteudo h3 {
+        font-size: 1.2rem;
+    }
 }
